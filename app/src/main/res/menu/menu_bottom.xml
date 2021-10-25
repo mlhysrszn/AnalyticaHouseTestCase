@@ -3,12 +3,17 @@
 
     <item
         android:id="@+id/playersFragment"
-        android:title="@string/players"
-        android:icon="@drawable/ic_player"/>
+        android:icon="@drawable/ic_player"
+        android:title="@string/players" />
 
     <item
         android:id="@+id/teamsFragment"
-        android:title="@string/teams"
-        android:icon="@drawable/ic_team"/>
+        android:icon="@drawable/ic_team"
+        android:title="@string/teams" />
+
+    <item
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/favorites" />
 
 </menu>

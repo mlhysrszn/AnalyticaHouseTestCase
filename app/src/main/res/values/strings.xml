@@ -3,4 +3,6 @@
     <string name="players">Players</string>
     <string name="teams">Teams</string>
     <string name="team">Team</string>
+    <string name="favorites">Favorites</string>
+    <string name="players_teams">Players | Teams</string>
 </resources>

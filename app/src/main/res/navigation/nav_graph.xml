@@ -12,4 +12,8 @@
         android:id="@+id/teamsFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.teams.TeamsFragment"
         android:label="TeamsFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
 </navigation>

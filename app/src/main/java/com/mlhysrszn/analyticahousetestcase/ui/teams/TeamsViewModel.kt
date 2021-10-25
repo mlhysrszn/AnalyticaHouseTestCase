@@ -14,7 +14,7 @@ class TeamsViewModel : ViewModel() {
         _teamsList.value = getTeamsList()
     }
 
-    fun getTeamsList(): ArrayList<TeamModel> {
+    private fun getTeamsList(): ArrayList<TeamModel> {
         return arrayListOf(
             TeamModel(1, "ATL", "Atlanta", "East", "Southeast", "Atlanta Hawks", "Hawks"),
             TeamModel(2, "BOS", "Boston", "East", "Atlantic", "Boston Celtics", "Celtics"),
