@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="team"
+            type="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtAbbreviation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.abbreviation}" />
+
+        <TextView
+            android:id="@+id/txtCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.city}" />
+
+        <TextView
+            android:id="@+id/txtConference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.conference}" />
+
+        <TextView
+            android:id="@+id/txtDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.division}" />
+
+        <TextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.fullName}" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{team.name}" />
+
+    </LinearLayout>
+</layout>

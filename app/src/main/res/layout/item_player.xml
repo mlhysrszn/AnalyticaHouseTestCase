@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="player"
+            type="com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.firstName}" />
+
+        <TextView
+            android:id="@+id/txtLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.lastName}" />
+
+        <TextView
+            android:id="@+id/txtPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.position}" />
+
+        <TextView
+            android:id="@+id/txtWeightPounds"
+            nullableText="@{player.weightPounds}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtHeightFeet"
+            nullableText="@{player.heightFeet}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtHeightInches"
+            nullableText="@{player.heightInches}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAbbreviation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.abbreviation}" />
+
+        <TextView
+            android:id="@+id/txtCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.city}" />
+
+        <TextView
+            android:id="@+id/txtConference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.conference}" />
+
+        <TextView
+            android:id="@+id/txtDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.division}" />
+
+        <TextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.fullName}" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{player.team.name}" />
+
+    </LinearLayout>
+</layout>

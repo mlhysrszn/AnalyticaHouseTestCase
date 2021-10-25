@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/playersFragment">
+
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.players.PlayersFragment"
+        android:label="PlayersFragment" />
+    <fragment
+        android:id="@+id/teamsFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.teams.TeamsFragment"
+        android:label="TeamsFragment" />
+</navigation>
