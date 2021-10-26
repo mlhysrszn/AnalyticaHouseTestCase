@@ -17,7 +17,7 @@ class PlayersAdapter(private val playersList: ArrayList<PlayerModel>) :
                 player = item
                 root.setOnClickListener {
                     val action =
-                        PlayersFragmentDirections.actionPlayersFragmentToPlayerDetailFragment(item)
+                        PlayersFragmentDirections.actionPlayersFragmentToPlayerDetailFragment(item.id)
                     it.findNavController().navigate(action)
                 }
             }

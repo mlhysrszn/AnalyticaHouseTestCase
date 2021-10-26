@@ -17,7 +17,7 @@ class TeamsAdapter(private val teamsList: ArrayList<TeamModel>) :
                 team = item
                 root.setOnClickListener {
                     val action =
-                        TeamsFragmentDirections.actionTeamsFragmentToTeamDetailFragment(item)
+                        TeamsFragmentDirections.actionTeamsFragmentToTeamDetailFragment(item.id)
                     it.findNavController().navigate(action)
                 }
             }

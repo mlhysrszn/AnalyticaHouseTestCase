@@ -5,11 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.mlhysrszn.analyticahousetestcase.databinding.FragmentPlayerDetailBinding
 
 class PlayerDetailFragment : Fragment() {
     private var _binding: FragmentPlayerDetailBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: PlayerDetailViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            val playerId = PlayerDetailFragmentArgs.fromBundle(it).playerId
+            viewModel.getPlayer(playerId)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,10 +34,9 @@ class PlayerDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            val player = PlayerDetailFragmentArgs.fromBundle(it).player
-            binding.player = player
-        }
+        viewModel.player.observe(viewLifecycleOwner, {
+            binding.player = it
+        })
     }
 
     override fun onDestroyView() {

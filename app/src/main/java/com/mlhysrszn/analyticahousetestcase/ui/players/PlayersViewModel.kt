@@ -4,7 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
-import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
+import com.mlhysrszn.analyticahousetestcase.data.remote.ApiUtils
+import com.mlhysrszn.analyticahousetestcase.data.remote.response.PlayersResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PlayersViewModel : ViewModel() {
     private var _playersList = MutableLiveData<ArrayList<PlayerModel>>()
@@ -12,123 +16,25 @@ class PlayersViewModel : ViewModel() {
         get() = _playersList
 
     init {
-        _playersList.value = getPlayersList()
+        getPlayersList()
     }
 
-    private fun getPlayersList(): ArrayList<PlayerModel> {
-        return arrayListOf(
-            PlayerModel(
-                1,
-                "Ike",
-                null,
-                null,
-                "Anigbogu",
-                "C",
-                TeamModel(12, "IND", "Indiana", "East", "Central", "Indiana Pacers", "Pacers"),
-                null
-            ),
-            PlayerModel(
-                2,
-                "Alex",
-                6,
-                6,
-                "Abrines",
-                "G",
-                TeamModel(
-                    21,
-                    "OKC",
-                    "Oklahoma City",
-                    "west",
-                    "Northwest",
-                    "Oklahoma City Thunder",
-                    "Thunder"
-                ),
-                200
-            ),
-            PlayerModel(
-                3,
-                "Ike",
-                null,
-                null,
-                "Anigbogu",
-                "C",
-                TeamModel(12, "IND", "Indiana", "East", "Central", "Indiana Pacers", "Pacers"),
-                null
-            ),
-            PlayerModel(
-                4,
-                "Alex",
-                6,
-                6,
-                "Abrines",
-                "G",
-                TeamModel(
-                    21,
-                    "OKC",
-                    "Oklahoma City",
-                    "west",
-                    "Northwest",
-                    "Oklahoma City Thunder",
-                    "Thunder"
-                ),
-                200
-            ),
-            PlayerModel(
-                5,
-                "Ike",
-                null,
-                null,
-                "Anigbogu",
-                "C",
-                TeamModel(12, "IND", "Indiana", "East", "Central", "Indiana Pacers", "Pacers"),
-                null
-            ),
-            PlayerModel(
-                6,
-                "Alex",
-                6,
-                6,
-                "Abrines",
-                "G",
-                TeamModel(
-                    21,
-                    "OKC",
-                    "Oklahoma City",
-                    "west",
-                    "Northwest",
-                    "Oklahoma City Thunder",
-                    "Thunder"
-                ),
-                200
-            ),
-            PlayerModel(
-                7,
-                "Ike",
-                null,
-                null,
-                "Anigbogu",
-                "C",
-                TeamModel(12, "IND", "Indiana", "East", "Central", "Indiana Pacers", "Pacers"),
-                null
-            ),
-            PlayerModel(
-                23,
-                "Alex",
-                6,
-                8,
-                "Abrines",
-                "G",
-                TeamModel(
-                    21,
-                    "OKC",
-                    "Oklahoma City",
-                    "west",
-                    "Northwest",
-                    "Oklahoma City Thunder",
-                    "Thunder"
-                ),
-                200
-            )
-        )
+    private fun getPlayersList() {
+        val apiService = ApiUtils.getApiService()
+        apiService.getPlayers().enqueue(object : Callback<PlayersResponse> {
+            override fun onResponse(
+                call: Call<PlayersResponse>,
+                response: Response<PlayersResponse>
+            ) {
+                val players = response.body()?.data
+                if (players != null) {
+                    _playersList.value = players as ArrayList<PlayerModel>
+                }
+            }
+
+            override fun onFailure(call: Call<PlayersResponse>, t: Throwable) {
+                println(t.localizedMessage?.toString())
+            }
+        })
     }
 }

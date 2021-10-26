@@ -29,16 +29,16 @@
         android:name="com.mlhysrszn.analyticahousetestcase.ui.detailplayer.PlayerDetailFragment"
         android:label="PlayerDetailFragment" >
         <argument
-            android:name="player"
-            app:argType="com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel" />
+            android:name="playerId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/teamDetailFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.detailteam.TeamDetailFragment"
         android:label="TeamDetailFragment" >
         <argument
-            android:name="team"
-            app:argType="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
+            android:name="teamId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/favPlayersFragment"

@@ -4,6 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
+import com.mlhysrszn.analyticahousetestcase.data.remote.ApiUtils
+import com.mlhysrszn.analyticahousetestcase.data.remote.response.TeamsResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class TeamsViewModel : ViewModel() {
     private var _teamsList = MutableLiveData<ArrayList<TeamModel>>()
@@ -11,19 +16,22 @@ class TeamsViewModel : ViewModel() {
         get() = _teamsList
 
     init {
-        _teamsList.value = getTeamsList()
+        getTeamsList()
     }
 
-    private fun getTeamsList(): ArrayList<TeamModel> {
-        return arrayListOf(
-            TeamModel(1, "ATL", "Atlanta", "East", "Southeast", "Atlanta Hawks", "Hawks"),
-            TeamModel(2, "BOS", "Boston", "East", "Atlantic", "Boston Celtics", "Celtics"),
-            TeamModel(3, "ATL", "Atlanta", "East", "Southeast", "Atlanta Hawks", "Hawks"),
-            TeamModel(4, "BOS", "Boston", "East", "Atlantic", "Boston Celtics", "Celtics"),
-            TeamModel(5, "ATL", "Atlanta", "East", "Southeast", "Atlanta Hawks", "Hawks"),
-            TeamModel(6, "BOS", "Boston", "East", "Atlantic", "Boston Celtics", "Celtics"),
-            TeamModel(7, "ATL", "Atlanta", "East", "Southeast", "Atlanta Hawks", "Hawks"),
-            TeamModel(8, "BOS", "Boston", "East", "Atlantic", "Boston Celtics", "Celtics")
-        )
+    private fun getTeamsList() {
+        val apiService = ApiUtils.getApiService()
+        apiService.getTeams().enqueue(object : Callback<TeamsResponse> {
+            override fun onResponse(call: Call<TeamsResponse>, response: Response<TeamsResponse>) {
+                val teams = response.body()?.data
+                if (teams != null) {
+                    _teamsList.value = teams as ArrayList<TeamModel>
+                }
+            }
+
+            override fun onFailure(call: Call<TeamsResponse>, t: Throwable) {
+                println(t.localizedMessage?.toString())
+            }
+        })
     }
 }
