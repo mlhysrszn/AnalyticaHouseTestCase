@@ -1,5 +1,7 @@
 package com.mlhysrszn.analyticahousetestcase.data.model
 
+import java.io.Serializable
+
 data class TeamModel(
     val id: Int,
     val abbreviation: String,
@@ -8,4 +10,4 @@ data class TeamModel(
     val division: String,
     val fullName: String,
     val name: String
-)
+) : Serializable

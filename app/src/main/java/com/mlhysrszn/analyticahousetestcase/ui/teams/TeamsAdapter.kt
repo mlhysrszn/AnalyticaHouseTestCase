@@ -2,6 +2,7 @@ package com.mlhysrszn.analyticahousetestcase.ui.teams
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
 import com.mlhysrszn.analyticahousetestcase.databinding.ItemTeamBinding
@@ -14,6 +15,11 @@ class TeamsAdapter(private val teamsList: ArrayList<TeamModel>) :
         fun bind(item: TeamModel) {
             binding.apply {
                 team = item
+                root.setOnClickListener {
+                    val action =
+                        TeamsFragmentDirections.actionTeamsFragmentToTeamDetailFragment(item)
+                    it.findNavController().navigate(action)
+                }
             }
         }
     }

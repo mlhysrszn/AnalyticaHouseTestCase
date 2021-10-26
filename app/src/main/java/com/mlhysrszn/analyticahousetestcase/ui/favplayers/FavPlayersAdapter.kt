@@ -14,6 +14,13 @@ class FavPlayersAdapter(private val favPlayersList: ArrayList<PlayerModel>) :
         fun bind(item: PlayerModel) {
             binding.apply {
                 player = item
+//                root.setOnClickListener {
+//                    val action =
+//                        FavPlayersFragmentDirections.actionFavPlayersFragmentToPlayerDetailFragment(
+//                            item
+//                        )
+//                    Navigation.findNavController(it).navigate(action)
+//                }
             }
         }
     }

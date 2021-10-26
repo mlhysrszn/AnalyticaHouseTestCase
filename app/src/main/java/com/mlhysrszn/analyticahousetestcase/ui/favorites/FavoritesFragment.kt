@@ -24,7 +24,7 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val titleList = listOf("PLAYERS", "TEAMS")
-        val adapter = FavoritesVPAdapter(childFragmentManager, lifecycle)
+        val adapter = FavoritesVPAdapter(this)
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

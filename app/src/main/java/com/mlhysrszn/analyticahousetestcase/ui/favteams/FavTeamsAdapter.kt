@@ -14,6 +14,11 @@ class FavTeamsAdapter(private val favTeamsList: ArrayList<TeamModel>) :
         fun bind(item: TeamModel) {
             binding.apply {
                 team = item
+//                root.setOnClickListener {
+//                    val action =
+//                        FavTeamsFragmentDirections.actionFavTeamsFragmentToTeamDetailFragment(item)
+//                    it.findNavController().navigate(action)
+//                }
             }
         }
     }

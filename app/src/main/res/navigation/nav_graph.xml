@@ -7,13 +7,53 @@
     <fragment
         android:id="@+id/playersFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.players.PlayersFragment"
-        android:label="PlayersFragment" />
+        android:label="PlayersFragment" >
+        <action
+            android:id="@+id/action_playersFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/teamsFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.teams.TeamsFragment"
-        android:label="TeamsFragment" />
+        android:label="TeamsFragment" >
+        <action
+            android:id="@+id/action_teamsFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragment"
         android:label="FavoritesFragment" />
+    <fragment
+        android:id="@+id/playerDetailFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.detailplayer.PlayerDetailFragment"
+        android:label="PlayerDetailFragment" >
+        <argument
+            android:name="player"
+            app:argType="com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.detailteam.TeamDetailFragment"
+        android:label="TeamDetailFragment" >
+        <argument
+            android:name="team"
+            app:argType="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/favPlayersFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.favplayers.FavPlayersFragment"
+        android:label="FavPlayersFragment" >
+        <action
+            android:id="@+id/action_favPlayersFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favTeamsFragment"
+        android:name="com.mlhysrszn.analyticahousetestcase.ui.favteams.FavTeamsFragment"
+        android:label="FavTeamsFragment" >
+        <action
+            android:id="@+id/action_favTeamsFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
 </navigation>

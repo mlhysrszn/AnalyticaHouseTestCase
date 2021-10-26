@@ -2,6 +2,7 @@ package com.mlhysrszn.analyticahousetestcase.ui.players
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
 import com.mlhysrszn.analyticahousetestcase.databinding.ItemPlayerBinding
@@ -14,6 +15,11 @@ class PlayersAdapter(private val playersList: ArrayList<PlayerModel>) :
         fun bind(item: PlayerModel) {
             binding.apply {
                 player = item
+                root.setOnClickListener {
+                    val action =
+                        PlayersFragmentDirections.actionPlayersFragmentToPlayerDetailFragment(item)
+                    it.findNavController().navigate(action)
+                }
             }
         }
     }
