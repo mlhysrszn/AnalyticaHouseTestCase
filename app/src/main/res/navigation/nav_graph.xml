@@ -23,7 +23,14 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragment"
-        android:label="FavoritesFragment" />
+        android:label="FavoritesFragment" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/playerDetailFragment"
         android:name="com.mlhysrszn.analyticahousetestcase.ui.detailplayer.PlayerDetailFragment"
@@ -39,21 +46,5 @@
         <argument
             android:name="teamId"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/favPlayersFragment"
-        android:name="com.mlhysrszn.analyticahousetestcase.ui.favplayers.FavPlayersFragment"
-        android:label="FavPlayersFragment" >
-        <action
-            android:id="@+id/action_favPlayersFragment_to_playerDetailFragment"
-            app:destination="@id/playerDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favTeamsFragment"
-        android:name="com.mlhysrszn.analyticahousetestcase.ui.favteams.FavTeamsFragment"
-        android:label="FavTeamsFragment" >
-        <action
-            android:id="@+id/action_favTeamsFragment_to_teamDetailFragment"
-            app:destination="@id/teamDetailFragment" />
     </fragment>
 </navigation>

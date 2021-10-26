@@ -2,9 +2,11 @@ package com.mlhysrszn.analyticahousetestcase.ui.favplayers
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
 import com.mlhysrszn.analyticahousetestcase.databinding.ItemPlayerBinding
+import com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragmentDirections
 
 class FavPlayersAdapter(private val favPlayersList: ArrayList<PlayerModel>) :
     RecyclerView.Adapter<FavPlayersAdapter.FavPlayersViewHolder>() {
@@ -14,13 +16,11 @@ class FavPlayersAdapter(private val favPlayersList: ArrayList<PlayerModel>) :
         fun bind(item: PlayerModel) {
             binding.apply {
                 player = item
-//                root.setOnClickListener {
-//                    val action =
-//                        FavPlayersFragmentDirections.actionFavPlayersFragmentToPlayerDetailFragment(
-//                            item
-//                        )
-//                    Navigation.findNavController(it).navigate(action)
-//                }
+                root.setOnClickListener {
+                    val action =
+                        FavoritesFragmentDirections.actionFavoritesFragmentToPlayerDetailFragment(item.id)
+                    Navigation.findNavController(it).navigate(action)
+                }
             }
         }
     }

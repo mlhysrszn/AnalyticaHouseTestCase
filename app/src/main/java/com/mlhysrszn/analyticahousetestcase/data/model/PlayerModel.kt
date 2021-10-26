@@ -1,7 +1,6 @@
 package com.mlhysrszn.analyticahousetestcase.data.model
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 data class PlayerModel(
     @SerializedName("id")
