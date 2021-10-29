@@ -24,9 +24,8 @@ class FavPlayersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.favPlayersList.observe(viewLifecycleOwner, {
-            val adapter = FavPlayersAdapter(it)
+            val adapter = it?.let { it1 -> FavPlayersAdapter(it1, viewModel) }
             binding.rvFavPlayers.adapter = adapter
         })
     }

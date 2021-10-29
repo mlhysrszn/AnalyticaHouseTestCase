@@ -13,3 +13,12 @@ fun TextView.nullableText(value: Int?) {
         text = value.toString()
     }
 }
+
+@BindingAdapter("positionText")
+fun TextView.positionText(value: String?) {
+    text = if (value.isNullOrEmpty()) {
+        "Position: -"
+    } else {
+        "Position: $value"
+    }
+}

@@ -5,4 +5,19 @@
     <string name="team">Team</string>
     <string name="favorites">Favorites</string>
     <string name="players_teams">Players | Teams</string>
+    <string name="add_or_delete_button">Add or delete favorites button</string>
+
+    <string name="first_name">First Name: %s</string>
+    <string name="last_name">Last Name: %s</string>
+    <string name="position">Position: %s</string>
+    <string name="weight_pounds">Weight Pounds: %d</string>
+    <string name="height_feet">Height Feet: %d</string>
+    <string name="height_inches">Height Inches: %d</string>
+    <string name="abbreviation">Abbreviation: %s</string>
+    <string name="city">City: %s</string>
+    <string name="conference">Conference: %s</string>
+    <string name="division">Division: %s</string>
+    <string name="full_name">Full Name: %s</string>
+    <string name="name">Name: %s</string>
+
 </resources>

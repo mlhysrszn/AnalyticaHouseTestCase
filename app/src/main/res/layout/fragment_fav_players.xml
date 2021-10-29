@@ -12,7 +12,8 @@
             android:id="@+id/rv_fav_players"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
     </FrameLayout>
 </layout>

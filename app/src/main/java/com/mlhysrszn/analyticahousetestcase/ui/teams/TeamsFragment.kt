@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
 import com.mlhysrszn.analyticahousetestcase.databinding.FragmentTeamsBinding
 
 class TeamsFragment : Fragment() {
@@ -27,8 +26,16 @@ class TeamsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.teamsList.observe(viewLifecycleOwner, {
-            val adapter = TeamsAdapter(it)
+            val adapter = TeamsAdapter(it, viewModel)
             binding.rvTeams.adapter = adapter
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            if (it == true) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         })
     }
 

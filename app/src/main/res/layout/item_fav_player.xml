@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="team"
-            type="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
+            name="player"
+            type="com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,40 +24,43 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/addOrDeleteButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:id="@+id/deleteButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="end"
-                android:layout_marginBottom="-20dp"
+                android:layout_marginBottom="-24dp"
+                android:background="@drawable/ic_favorite"
                 android:contentDescription="@string/add_or_delete_button" />
 
             <TextView
-                android:id="@+id/txtAbbreviation"
+                android:id="@+id/txtFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{team.abbreviation}"
+                android:text="@{player.firstName}"
                 android:textColor="@color/bblack"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtCity"
+                android:id="@+id/txtLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{team.city}"
+                android:text="@{player.lastName}"
                 android:textColor="@color/bblack"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtConference"
+                android:id="@+id/txtPosition"
+                positionText="@{player.position}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{team.conference}"
                 android:textColor="@color/bblack"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -6,7 +6,7 @@
 
         <variable
             name="team"
-            type="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
+            type="com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,10 +24,11 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/addOrDeleteButton"
+                android:id="@+id/deleteButton"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="end"
+                android:background="@drawable/ic_favorite"
                 android:layout_marginBottom="-20dp"
                 android:contentDescription="@string/add_or_delete_button" />
 
@@ -58,6 +59,7 @@
                 android:text="@{team.conference}"
                 android:textColor="@color/bblack"
                 android:textSize="16sp" />
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

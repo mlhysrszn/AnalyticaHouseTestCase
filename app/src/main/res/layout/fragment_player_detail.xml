@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="start"
         android:orientation="vertical"
         android:padding="8dp">
 
@@ -19,79 +19,137 @@
             android:id="@+id/txtFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.firstName}" />
+            android:text="@{@string/first_name(player.firstName)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.lastName}" />
+            android:text="@{@string/last_name(player.lastName)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtPosition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.position}" />
+            positionText="@{player.position}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtWeightPounds"
             nullableText="@{player.weightPounds}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{@string/weight_pounds(player.weightPounds)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtHeightFeet"
             nullableText="@{player.heightFeet}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{@string/height_feet(player.heightFeet)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtHeightInches"
             nullableText="@{player.heightInches}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{@string/height_inches(player.heightInches)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/txtTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/team"
-            android:textStyle="bold" />
+            android:textColor="@color/bblack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtAbbreviation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.abbreviation}" />
+            android:text="@{@string/abbreviation(player.team.abbreviation)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.city}" />
+            android:text="@{@string/city(player.team.city)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtConference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.conference}" />
+            android:text="@{@string/conference(player.team.conference)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtDivision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.division}" />
+            android:text="@{@string/division(player.team.division)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.fullName}" />
+            android:text="@{@string/full_name(player.team.fullName)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{player.team.name}" />
+            android:text="@{@string/name(player.team.name)}"
+            android:textColor="@color/bblack"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/addOrDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/add_or_delete_button"
+            android:visibility="gone" />
 
     </LinearLayout>
 </layout>

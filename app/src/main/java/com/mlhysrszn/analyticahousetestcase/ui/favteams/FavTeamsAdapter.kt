@@ -4,33 +4,42 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
-import com.mlhysrszn.analyticahousetestcase.databinding.ItemTeamBinding
+import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
+import com.mlhysrszn.analyticahousetestcase.databinding.ItemFavTeamBinding
 import com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragmentDirections
 
-class FavTeamsAdapter(private val favTeamsList: ArrayList<TeamModel>) :
+class FavTeamsAdapter(
+    private val favTeamsList: List<FavTeamModel>,
+    private val viewModel: FavTeamsViewModel
+) :
     RecyclerView.Adapter<FavTeamsAdapter.FavTeamsViewHolder>() {
 
-    class FavTeamsViewHolder(private val binding: ItemTeamBinding) :
+    class FavTeamsViewHolder(
+        private val binding: ItemFavTeamBinding,
+        private val viewModel: FavTeamsViewModel
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TeamModel) {
+        fun bind(item: FavTeamModel) {
             binding.apply {
                 team = item
                 root.setOnClickListener {
                     val action =
                         FavoritesFragmentDirections.actionFavoritesFragmentToTeamDetailFragment(
-                            item.id
+                            item.teamId
                         )
                     it.findNavController().navigate(action)
+                }
+                deleteButton.setOnClickListener {
+                    viewModel.deleteFavTeam(item.teamId)
                 }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavTeamsViewHolder {
-        val itemTeamBinding =
-            ItemTeamBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FavTeamsViewHolder(itemTeamBinding)
+        val itemFavTeamBinding =
+            ItemFavTeamBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FavTeamsViewHolder(itemFavTeamBinding, viewModel)
     }
 
     override fun onBindViewHolder(holder: FavTeamsViewHolder, position: Int) {

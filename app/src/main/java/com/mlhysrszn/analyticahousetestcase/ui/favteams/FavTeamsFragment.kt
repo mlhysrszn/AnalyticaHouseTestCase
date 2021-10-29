@@ -26,7 +26,7 @@ class FavTeamsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.favTeamsList.observe(viewLifecycleOwner, {
-            val adapter = FavTeamsAdapter(it)
+            val adapter = it?.let { it1 -> FavTeamsAdapter(it1, viewModel) }
             binding.rvFavTeams.adapter = adapter
         })
     }

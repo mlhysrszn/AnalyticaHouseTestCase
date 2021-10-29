@@ -4,31 +4,42 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
-import com.mlhysrszn.analyticahousetestcase.databinding.ItemPlayerBinding
+import com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel
+import com.mlhysrszn.analyticahousetestcase.databinding.ItemFavPlayerBinding
 import com.mlhysrszn.analyticahousetestcase.ui.favorites.FavoritesFragmentDirections
 
-class FavPlayersAdapter(private val favPlayersList: ArrayList<PlayerModel>) :
+class FavPlayersAdapter(
+    private val favPlayersList: List<FavPlayerModel>,
+    private val viewModel: FavPlayersViewModel
+) :
     RecyclerView.Adapter<FavPlayersAdapter.FavPlayersViewHolder>() {
 
-    class FavPlayersViewHolder(private val binding: ItemPlayerBinding) :
+    class FavPlayersViewHolder(
+        val binding: ItemFavPlayerBinding,
+        private val viewModel: FavPlayersViewModel
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PlayerModel) {
+        fun bind(item: FavPlayerModel) {
             binding.apply {
                 player = item
                 root.setOnClickListener {
                     val action =
-                        FavoritesFragmentDirections.actionFavoritesFragmentToPlayerDetailFragment(item.id)
+                        FavoritesFragmentDirections.actionFavoritesFragmentToPlayerDetailFragment(
+                            item.playerId
+                        )
                     Navigation.findNavController(it).navigate(action)
+                }
+                deleteButton.setOnClickListener {
+                    viewModel.deleteFavPlayer(item.playerId)
                 }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavPlayersViewHolder {
-        val itemPlayerBinding =
-            ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FavPlayersViewHolder(itemPlayerBinding)
+        val itemFavPlayerBinding =
+            ItemFavPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FavPlayersViewHolder(itemFavPlayerBinding, viewModel)
     }
 
     override fun onBindViewHolder(holder: FavPlayersViewHolder, position: Int) {

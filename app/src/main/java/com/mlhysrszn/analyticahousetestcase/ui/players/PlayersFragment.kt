@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
-import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
 import com.mlhysrszn.analyticahousetestcase.databinding.FragmentPlayersBinding
 
 class PlayersFragment : Fragment() {
@@ -28,8 +26,16 @@ class PlayersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.playersList.observe(viewLifecycleOwner, {
-            val adapter = PlayersAdapter(it)
+            val adapter = PlayersAdapter(it, viewModel)
             binding.rvPlayers.adapter = adapter
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            if (it == true) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         })
     }
 
