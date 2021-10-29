@@ -2,9 +2,10 @@ package com.mlhysrszn.analyticahousetestcase.ui.teams
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.mlhysrszn.analyticahousetestcase.R
 import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
@@ -14,7 +15,13 @@ class TeamsAdapter(
     private val teamsList: ArrayList<TeamModel>,
     private val viewModel: TeamsViewModel
 ) :
-    RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>() {
+    RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>(), Filterable {
+
+    var teamsFilterList = ArrayList<TeamModel>()
+
+    init {
+        teamsFilterList = teamsList
+    }
 
     class TeamsViewHolder(
         private val binding: ItemTeamBinding,
@@ -63,9 +70,39 @@ class TeamsAdapter(
     }
 
     override fun onBindViewHolder(holder: TeamsViewHolder, position: Int) {
-        val team = teamsList[position]
+        val team = teamsFilterList[position]
         holder.bind(team)
     }
 
-    override fun getItemCount(): Int = teamsList.size
+    override fun getItemCount(): Int = teamsFilterList.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val searchText = p0.toString()
+                teamsFilterList = if (searchText.isEmpty()) {
+                    teamsList
+                } else {
+                    val resultsList = ArrayList<TeamModel>()
+                    for (row in teamsList) {
+                        if (row.fullName.lowercase().contains(searchText.lowercase()) or
+                            row.abbreviation.lowercase().contains(searchText.lowercase())
+                        ) {
+                            resultsList.add(row)
+                        }
+                    }
+                    resultsList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = teamsFilterList
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, results: FilterResults?) {
+                teamsFilterList = results?.values as ArrayList<TeamModel>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 }

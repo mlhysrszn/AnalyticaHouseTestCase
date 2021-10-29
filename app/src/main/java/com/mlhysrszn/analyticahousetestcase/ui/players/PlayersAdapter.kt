@@ -2,9 +2,10 @@ package com.mlhysrszn.analyticahousetestcase.ui.players
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.mlhysrszn.analyticahousetestcase.R
 import com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel
 import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
@@ -15,7 +16,13 @@ class PlayersAdapter(
     private val playersList: ArrayList<PlayerModel>,
     private val viewModel: PlayersViewModel
 ) :
-    RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder>() {
+    RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder>(), Filterable {
+
+    var playersFilterList = ArrayList<PlayerModel>()
+
+    init {
+        playersFilterList = playersList
+    }
 
     class PlayersViewHolder(
         private val binding: ItemPlayerBinding,
@@ -73,9 +80,36 @@ class PlayersAdapter(
     }
 
     override fun onBindViewHolder(holder: PlayersViewHolder, position: Int) {
-        val player = playersList[position]
+        val player = playersFilterList[position]
         holder.bind(player)
     }
 
-    override fun getItemCount(): Int = playersList.size
+    override fun getItemCount(): Int = playersFilterList.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val searchText = p0.toString()
+                playersFilterList = if (searchText.isEmpty()) {
+                    playersList
+                } else {
+                    val resultsList = ArrayList<PlayerModel>()
+                    for (row in playersList) {
+                        if (row.firstName.lowercase().contains(searchText.lowercase())) {
+                            resultsList.add(row)
+                        }
+                    }
+                    resultsList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = playersFilterList
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, results: FilterResults?) {
+                playersFilterList = results?.values as ArrayList<PlayerModel>
+                notifyDataSetChanged()
+            }
+        }
+    }
 }

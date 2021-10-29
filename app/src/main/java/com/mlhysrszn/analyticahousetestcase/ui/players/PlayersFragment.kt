@@ -13,6 +13,7 @@ class PlayersFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: PlayersViewModel by viewModels()
+    private lateinit var adapter: PlayersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,16 +27,31 @@ class PlayersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.playersList.observe(viewLifecycleOwner, {
-            val adapter = PlayersAdapter(it, viewModel)
+            adapter = PlayersAdapter(it, viewModel)
             binding.rvPlayers.adapter = adapter
         })
 
         viewModel.isLoading.observe(viewLifecycleOwner, {
             if (it == true) {
                 binding.progressBar.visibility = View.VISIBLE
+                binding.rvPlayers.visibility = View.GONE
             } else {
                 binding.progressBar.visibility = View.GONE
+                binding.rvPlayers.visibility = View.VISIBLE
             }
+        })
+
+        binding.searchPlayer.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+
         })
     }
 
