@@ -8,82 +8,98 @@
             type="com.mlhysrszn.analyticahousetestcase.data.model.TeamModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtAbbreviation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/abbreviation(team.abbreviation)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+        <LinearLayout
+            android:id="@+id/teamDetailLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/txtCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/city(team.city)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtTeamInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/team_info"
+                android:textColor="@color/purple"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtConference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/conference(team.conference)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtAbbreviation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/abbreviation(team.abbreviation)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtDivision"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/division(team.division)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/city(team.city)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtFullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/full_name(team.fullName)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtConference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/conference(team.conference)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/name(team.name)}"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtDivision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/division(team.division)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/addOrDeleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/add_or_delete_button"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/txtFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/full_name(team.fullName)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/name(team.name)}"
+                android:textColor="@color/purple"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/addOrDeleteButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/add_or_delete_button" />
+
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:textColor="@color/bblack"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            android:layout_gravity="center" />
 
-    </LinearLayout>
+    </FrameLayout>
 </layout>

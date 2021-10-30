@@ -19,7 +19,7 @@ class FavPlayersViewModel(application: Application) : AndroidViewModel(applicati
         _favPlayersList.value = getFavPlayersList()
     }
 
-    fun getFavPlayersList(): List<FavPlayerModel>? {
+    private fun getFavPlayersList(): List<FavPlayerModel>? {
         return favDAO?.getAllFavPlayers()
     }
 

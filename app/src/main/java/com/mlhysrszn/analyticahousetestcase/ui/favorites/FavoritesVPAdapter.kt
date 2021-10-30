@@ -18,6 +18,3 @@ class FavoritesVPAdapter(fragment: Fragment) :
         }
     }
 }
-
-//class FavoritesVPAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
-//    FragmentStateAdapter(fragmentManager, lifecycle)

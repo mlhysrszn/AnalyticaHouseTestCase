@@ -60,4 +60,16 @@ class TeamsViewModel(application: Application) : AndroidViewModel(application) {
         val team = favDAO?.getFavTeam(teamId)
         return team?.teamId
     }
+
+    fun favTeamModel(model: TeamModel): FavTeamModel {
+        return FavTeamModel(
+            model.id,
+            model.abbreviation,
+            model.city,
+            model.conference,
+            model.division,
+            model.fullName,
+            model.name
+        )
+    }
 }

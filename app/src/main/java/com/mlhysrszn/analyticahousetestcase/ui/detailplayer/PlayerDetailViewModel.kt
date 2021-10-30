@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mlhysrszn.analyticahousetestcase.data.local.FavoritesDatabase
 import com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel
+import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
 import com.mlhysrszn.analyticahousetestcase.data.remote.ApiUtils
 import retrofit2.Call
@@ -53,5 +54,26 @@ class PlayerDetailViewModel(application: Application) : AndroidViewModel(applica
         } else {
             favDAO.deleteFavPlayer(favPlayer.playerId)
         }
+    }
+
+    fun favPlayerModel(model: PlayerModel): FavPlayerModel {
+        return FavPlayerModel(
+            model.id,
+            model.firstName,
+            model.heightFeet,
+            model.heightInches,
+            model.lastName,
+            model.position,
+            FavTeamModel(
+                model.team.id,
+                model.team.abbreviation,
+                model.team.city,
+                model.team.conference,
+                model.team.division,
+                model.team.fullName,
+                model.team.name
+            ),
+            model.weightPounds
+        )
     }
 }

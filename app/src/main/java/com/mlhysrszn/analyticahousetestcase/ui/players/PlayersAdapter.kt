@@ -7,8 +7,6 @@ import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.analyticahousetestcase.R
-import com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel
-import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
 import com.mlhysrszn.analyticahousetestcase.databinding.ItemPlayerBinding
 
@@ -38,24 +36,7 @@ class PlayersAdapter(
                     it.findNavController().navigate(action)
                 }
                 addOrDeleteButton.setOnClickListener {
-                    val favPlayer = FavPlayerModel(
-                        item.id,
-                        item.firstName,
-                        item.heightFeet,
-                        item.heightInches,
-                        item.lastName,
-                        item.position,
-                        FavTeamModel(
-                            item.team.id,
-                            item.team.abbreviation,
-                            item.team.city,
-                            item.team.conference,
-                            item.team.division,
-                            item.team.fullName,
-                            item.team.name
-                        ),
-                        item.weightPounds
-                    )
+                    val favPlayer = viewModel.favPlayerModel(item)
                     if (item.id == viewModel.getPlayer(item.id)) {
                         viewModel.insertOrDeleteFavPlayer(favPlayer)
                         it.setBackgroundResource(R.drawable.ic_not_favorite)

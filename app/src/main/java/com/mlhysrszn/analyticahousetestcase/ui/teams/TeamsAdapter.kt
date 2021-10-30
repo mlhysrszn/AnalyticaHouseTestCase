@@ -7,7 +7,6 @@ import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.analyticahousetestcase.R
-import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
 import com.mlhysrszn.analyticahousetestcase.databinding.ItemTeamBinding
 
@@ -37,15 +36,7 @@ class TeamsAdapter(
                     it.findNavController().navigate(action)
                 }
                 addOrDeleteButton.setOnClickListener {
-                    val favTeam = FavTeamModel(
-                        item.id,
-                        item.abbreviation,
-                        item.city,
-                        item.conference,
-                        item.division,
-                        item.fullName,
-                        item.name
-                    )
+                    val favTeam = viewModel.favTeamModel(item)
                     if (item.id == viewModel.getTeam(item.id)) {
                         viewModel.insertOrDeleteFavTeam(favTeam)
                         it.setBackgroundResource(R.drawable.ic_not_favorite)

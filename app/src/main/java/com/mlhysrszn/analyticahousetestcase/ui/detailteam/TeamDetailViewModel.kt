@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.mlhysrszn.analyticahousetestcase.data.local.FavoritesDatabase
 import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.TeamModel
@@ -54,5 +53,17 @@ class TeamDetailViewModel(application: Application): AndroidViewModel(applicatio
         } else {
             favDAO.deleteFavTeam(favTeam.teamId)
         }
+    }
+
+    fun favTeamModel(model: TeamModel): FavTeamModel {
+        return FavTeamModel(
+            model.id,
+            model.abbreviation,
+            model.city,
+            model.conference,
+            model.division,
+            model.fullName,
+            model.name
+        )
     }
 }

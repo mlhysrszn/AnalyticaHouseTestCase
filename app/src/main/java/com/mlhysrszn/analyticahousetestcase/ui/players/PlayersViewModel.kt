@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mlhysrszn.analyticahousetestcase.data.local.FavoritesDatabase
 import com.mlhysrszn.analyticahousetestcase.data.model.FavPlayerModel
+import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 import com.mlhysrszn.analyticahousetestcase.data.model.PlayerModel
 import com.mlhysrszn.analyticahousetestcase.data.remote.ApiUtils
 import com.mlhysrszn.analyticahousetestcase.data.remote.response.PlayersResponse
@@ -61,5 +62,26 @@ class PlayersViewModel(application: Application) : AndroidViewModel(application)
     fun getPlayer(playerId: Int): Int? {
         val player = favDAO?.getFavPlayer(playerId)
         return player?.playerId
+    }
+
+    fun favPlayerModel(model: PlayerModel): FavPlayerModel {
+        return FavPlayerModel(
+            model.id,
+            model.firstName,
+            model.heightFeet,
+            model.heightInches,
+            model.lastName,
+            model.position,
+            FavTeamModel(
+                model.team.id,
+                model.team.abbreviation,
+                model.team.city,
+                model.team.conference,
+                model.team.division,
+                model.team.fullName,
+                model.team.name
+            ),
+            model.weightPounds
+        )
     }
 }
