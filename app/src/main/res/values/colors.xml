@@ -8,4 +8,6 @@
 
     <color name="light_purple">#723EA3</color>
     <color name="purple">#552583</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>
