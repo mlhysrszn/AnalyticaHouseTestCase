@@ -12,6 +12,7 @@ class FavPlayersFragment : Fragment() {
     private var _binding: FragmentFavPlayersBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var adapter: FavPlayersAdapter
     private val viewModel: FavPlayersViewModel by viewModels()
 
     override fun onCreateView(
@@ -22,12 +23,14 @@ class FavPlayersFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
+        viewModel.getFavPlayersList()
         viewModel.favPlayersList.observe(viewLifecycleOwner, {
-            val adapter = it?.let { it1 -> FavPlayersAdapter(it1, viewModel) }
+            adapter = FavPlayersAdapter(it,viewModel)
             binding.rvFavPlayers.adapter = adapter
         })
+
     }
 
     override fun onDestroyView() {

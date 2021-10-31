@@ -8,23 +8,23 @@ import com.mlhysrszn.analyticahousetestcase.data.local.FavoritesDatabase
 import com.mlhysrszn.analyticahousetestcase.data.model.FavTeamModel
 
 class FavTeamsViewModel(application: Application) : AndroidViewModel(application) {
-    private val _favTeamsList: MutableLiveData<List<FavTeamModel>?> =
-        MutableLiveData<List<FavTeamModel>?>()
-    val favTeamsList: LiveData<List<FavTeamModel>?>
+    private val _favTeamsList: MutableLiveData<List<FavTeamModel>> =
+        MutableLiveData<List<FavTeamModel>>()
+    val favTeamsList: LiveData<List<FavTeamModel>>
         get() = _favTeamsList
 
     private val favDAO = FavoritesDatabase.getFavoritesDatabase(application)?.favoritesDAO()
 
     init {
-        _favTeamsList.value = getFavTeamsList()
+        getFavTeamsList()
     }
 
-    private fun getFavTeamsList(): List<FavTeamModel>? {
-        return favDAO?.getAllFavTeams()
+    fun getFavTeamsList() {
+        _favTeamsList.value =favDAO?.getAllFavTeams()
     }
 
     fun deleteFavTeam(favTeamId: Int) {
         favDAO?.deleteFavTeam(favTeamId)
-        _favTeamsList.value = getFavTeamsList()
+        getFavTeamsList()
     }
 }

@@ -22,11 +22,11 @@ class FavTeamsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onStart() {
+        super.onStart()
+        viewModel.getFavTeamsList()
         viewModel.favTeamsList.observe(viewLifecycleOwner, {
-            val adapter = it?.let { it1 -> FavTeamsAdapter(it1, viewModel) }
+            val adapter = FavTeamsAdapter(it, viewModel)
             binding.rvFavTeams.adapter = adapter
         })
     }

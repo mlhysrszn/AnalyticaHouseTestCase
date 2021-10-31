@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:queryHint="Enter player name"
-            app:iconifiedByDefault="false" />
+            app:iconifiedByDefault="false"
+            android:focusable="false"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_players"

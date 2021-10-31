@@ -16,10 +16,10 @@ interface FavoritesDAO {
     fun insertFavTeam(favTeam: FavTeamModel)
 
     @Query("SELECT * FROM fav_player")
-    fun getAllFavPlayers(): List<FavPlayerModel>?
+    fun getAllFavPlayers(): List<FavPlayerModel>
 
     @Query("SELECT * FROM fav_team")
-    fun getAllFavTeams(): List<FavTeamModel>?
+    fun getAllFavTeams(): List<FavTeamModel>
 
     @Query("SELECT * FROM fav_player WHERE player_id = :favPlayerId")
     fun getFavPlayer(favPlayerId: Int): FavPlayerModel?
